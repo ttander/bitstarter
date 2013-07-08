@@ -5,14 +5,10 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
     var fs = require('fs');
 
-    fs.readFile('./Index.html', function read(err, data) {
-	if (err) {
-            throw err;
-	}
+    fs.readFile('index.html', function read(err, data) {
+	if (err) throw err;
 
-	console.log(data);
-
-	response.send('test');
+	response.end(data.toString());
 
     });
 });
